@@ -1,14 +1,14 @@
 import React, { useReducer, useState } from 'react'
 
   const reducer = (state, action) => {
-switch (action.type) {
-    case "INCREMENT":
-      return { count: state.count + 1, showText: state.showText };
-    case "DECREMENT":
-       if(state.count >= 1) {
-        return {count: state.count - 1, showText: state.showText} 
-       } else {
-         return {
+    switch (action.type) {
+      case "INCREMENT":
+        return { count: state.count + 1};
+      case "DECREMENT":
+        if(state.count >= 1) {
+          return {count: state.count - 1} 
+        } else {
+          return {
            count: state.count
          }
        }
@@ -19,7 +19,7 @@ switch (action.type) {
 
 const App = () => {
   const [counter, setCounter] = useState(0)
-  const [state, dispatch] = useReducer(reducer, {count: 0, showText: true })
+  const [state, dispatch] = useReducer(reducer, {count: 0})
 
   const increment = () => {
     setCounter(counter + 1)
@@ -31,14 +31,18 @@ const App = () => {
     }  
   }
 
-  const oddOrEven = (pr) => {
-    if (pr == 0) {
-      return null
-    } else if (pr % 2 == 0) {
-      return "Is Even"
-    } else {
-      return "Is Odd"
-    }
+  // const oddOrEven = (param) => {
+  //   if (param == 0) {
+  //     return null
+  //   } else if (param % 2 == 0) {
+  //     return "Is Even"
+  //   } else {
+  //     return "Is Odd"
+  //   }
+  // }
+
+  const oddOrEven = (param) => {
+   return param == 0 ? null : param % 2 == 0 ? "Is Even" : "Is Odd"
   }
   
 
@@ -67,3 +71,8 @@ const App = () => {
 }
 
 export default App
+
+
+
+
+
